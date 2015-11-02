@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:composite="http://xmlns.jcp.org/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="titulo">Sistema Financeiro</ui:insert>
+	</title>
+	<h:outputStylesheet library="fema" name="estilo.css" />
+	<link rel="stylesheet" href="%PATH%/theme.css" />
+    <link rel="stylesheet" href="%PATH%/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/fa/font-awesome.css" />
+    <link rel="stylesheet" href="%PATH%/prime-ui-min.css" />
+    <script type="text/javascript" src="%PATH%/jquery.js"></script>
+    <script type="text/javascript" src="%PATH%/jquery-ui.js"></script>
+    <script type="text/javascript" src="%PATH%/prime-ui.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=no" />
+</h:head>
+<h:body style="background-color:#FFD39B">
+
+	<p:ajaxStatus styleClass="ajax-status">
+		<f:facet name="start">
+			<h:graphicImage library="fema" name="loading.png" />
+		</f:facet>
+		<f:facet name="complete">
+			<h:outputText value="" />
+		</f:facet>
+	</p:ajaxStatus>
+
+	<header>
+		<h:graphicImage library="fema" name="logoFema.png" />
+		<div style="float: right; margin-right: 20px; margin-top: 8px">
+			Usuário: #{usuario.nome}</div>
+	</header>
+	<h:form>
+		<p:menubar style="margin-top: -20px; margin-bottom: 20px">
+			<p:submenu label="Cadastros">
+				<p:menuitem value="Pessoa" 
+					action="/CadastroPessoas?faces-redirect=true" />
+				<p:menuitem value="Lançamento"
+					action="/CadastroLancamentos?faces-redirect=true" />
+			</p:submenu>
+			<p:submenu label="Consultas">
+				<p:menuitem value="Pessoas"
+					action="/ConsultaPessoas?faces-redirect=true" />
+				<p:menuitem value="Lançamentos"
+					action="/ConsultaLancamentos?faces-redirect=true" />
+			</p:submenu>
+			<p:submenu label="Sistema">
+				<p:menuitem value="PrimeFaces"
+					url="http://www.primefaces.org/" target="_blank" icon="ui-icon-document"/>
+				<p:menuitem value="Sobre" action="/Sobre?faces-redirect=true" icon="ui-icon-info"/>
+				<p:menuitem value="Home" action="/index?faces-redirect=true" icon="ui-icon-home"/>
+				<p:menuitem value="Sair" action="#{loginBean.logout}" icon="ui-icon-extlink"/>
+			</p:submenu>
+
+			<f:facet name="options">
+				<p:inputText style="margin-right:10px" placeholder="Search" />
+				<p:commandLink action="#{loginBean.logout}">
+					<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+				</p:commandLink>
+			</f:facet>
+
+		</p:menubar>
+	</h:form>
+	<div id="conteudo">
+		<ui:insert name="corpo" />
+	</div>
+	<footer> Sistema Financeiro - AlgaWorks/FEMA - Tópicos de
+		programação - Prof. Domingos</footer>
+</h:body>
+</html>
