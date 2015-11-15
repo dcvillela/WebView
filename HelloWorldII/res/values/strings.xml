@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Hello World II - TAP - FEMA</string>
+    <string name="action_settings">Settings</string>
+    <string name="logo">FEMA</string>
+    <string name="titulo">Digite seu nome:</string>
+    <string name="surpreenda_me">Processar</string>
+    <string name="saudacao">Bem vindo ao Android</string>
+
+</resources>
